@@ -1,9 +1,10 @@
-package bz.oron.rxgithub
+package bz.oron.rxgithub.ui.search
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import bz.oron.rxgithub.R
+import dagger.android.support.DaggerAppCompatActivity
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : DaggerAppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
