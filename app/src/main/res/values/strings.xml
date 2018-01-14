@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">RxGithub</string>
+  <string name="user_image">User image</string>
 </resources>

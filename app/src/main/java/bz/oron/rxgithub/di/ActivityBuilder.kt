@@ -12,5 +12,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilder {
 
   @ContributesAndroidInjector(modules = [SearchModule::class])
-  abstract fun bindsSearchActivity(): SearchActivity
+  abstract fun bindSearchActivity(): SearchActivity
 }
