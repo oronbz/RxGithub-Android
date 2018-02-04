@@ -16,7 +16,8 @@ import javax.inject.Singleton
       (AndroidSupportInjectionModule::class),
       (AppModule::class),
       (ActivityBuilder::class),
-      (RetrofitModule::class)
+      (RetrofitModule::class),
+      (RepositoryModule::class)
     ]
 )
 interface AppComponent: AndroidInjector<RxGithubApp> {
