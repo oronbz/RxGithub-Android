@@ -19,7 +19,7 @@ class SearchViewModel @Inject constructor(private val gitHubApi: GitHubApi): Vie
   private var query = MutableLiveData<String?>()
 
   init {
-    items.value = listOf(SearchItemViewModel("oronbz", "https://avatars0.githubusercontent.com/u/1288090?s=460&v=4\""))
+    // items.value = listOf(SearchItemViewModel("oronbz", "https://avatars0.githubusercontent.com/u/1288090?s=460&v=4\""))
   }
 
   fun search(query: String?) {
