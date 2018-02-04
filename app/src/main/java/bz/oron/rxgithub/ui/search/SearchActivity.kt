@@ -26,14 +26,14 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_search)
 
-    viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+    viewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
 
     supportActionBar?.title = ""
 
     linearLayoutManager = LinearLayoutManager(this)
     searchRv.layoutManager = linearLayoutManager
 
-    adapter = SearchAdapter(arrayListOf())
+    adapter = SearchAdapter(listOf())
     searchRv.adapter = adapter
 
     setupBindings()

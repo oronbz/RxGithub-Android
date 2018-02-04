@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_search.view.*
 /**
  * Created by oron on 1/11/18.
  */
-class SearchAdapter(var viewModels: ArrayList<SearchItemViewModel>): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(var viewModels: List<SearchItemViewModel>): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
     val itemViewModel = viewModels[position]
