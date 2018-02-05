@@ -1,7 +1,7 @@
 package bz.oron.rxgithub.ui.search
 
 import android.arch.lifecycle.*
-import bz.oron.rxgithub.models.GitHubUserSearch
+import bz.oron.rxgithub.extensions.*
 import bz.oron.rxgithub.repositories.IGitHubRepository
 import javax.inject.Inject
 
@@ -11,24 +11,22 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val gitHubRepository: IGitHubRepository): ViewModel() {
   val items: LiveData<List<SearchItemViewModel>>
 
-  private var query = MutableLiveData<String?>()
+  private val query = MutableLiveData<String?>()
 
   init {
-    val searchResults = Transformations.switchMap(query, {
-      if (it != null && it.isNotBlank()) {
-        gitHubRepository.searchUsers(it)
-      } else {
-        MutableLiveData()
-      }
-    })
+    val searchResults = query
+        .filterNull()
+        .filter { it.isNotBlank() }
+        .switchMap {
+          gitHubRepository.searchUsers(it)
+        }
 
-    val resultItems = Transformations.map(searchResults, {
-      it?.users?.map {
-        SearchItemViewModel(it.username, it.avatarUrl)
-      } ?: emptyList()
-    })
-
-    items = resultItems
+    items = searchResults
+        .filterNull().map {
+          it.users.map {
+            SearchItemViewModel(it.username, it.avatarUrl)
+          }
+        }
   }
 
   fun search(query: String?) {

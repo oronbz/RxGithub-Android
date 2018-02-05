@@ -1,6 +1,5 @@
 package bz.oron.rxgithub.ui.search
 
-import android.arch.lifecycle.ViewModel
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
@@ -14,7 +13,10 @@ import kotlinx.android.synthetic.main.item_search.view.*
 /**
  * Created by oron on 1/11/18.
  */
-class SearchAdapter(var viewModels: List<SearchItemViewModel>): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(
+    var viewModels: List<SearchItemViewModel>,
+    private val clickListener: (index: Int) -> Unit
+): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
     val itemViewModel = viewModels[position]
@@ -25,15 +27,15 @@ class SearchAdapter(var viewModels: List<SearchItemViewModel>): RecyclerView.Ada
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
     val inflatedView = parent.inflate(R.layout.item_search, false)
-    return ViewHolder(inflatedView)
+    return ViewHolder(inflatedView, clickListener)
   }
 
-  class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+  class ViewHolder(private val view: View, private val clickListener: (index: Int) -> Unit): RecyclerView.ViewHolder(view) {
     private var viewModel: SearchItemViewModel? = null
 
     init {
       view.setOnClickListener {
-        Log.d("SearchRecyclerView", "Clicked on " + layoutPosition)
+        clickListener(layoutPosition)
       }
     }
 

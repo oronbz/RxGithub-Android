@@ -4,8 +4,10 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.annotation.MainThread
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
+import android.util.Log
 import android.view.Menu
 import bz.oron.rxgithub.R
 import dagger.android.support.DaggerAppCompatActivity
@@ -22,6 +24,7 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
   private lateinit var linearLayoutManager: LinearLayoutManager
   private lateinit var adapter: SearchAdapter
 
+  @MainThread
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_search)
@@ -33,7 +36,10 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
     linearLayoutManager = LinearLayoutManager(this)
     searchRv.layoutManager = linearLayoutManager
 
-    adapter = SearchAdapter(listOf())
+    adapter = SearchAdapter(listOf(), {
+      Log.d("SEARCH ACTIVITY", "CLICKED: $it")
+    })
+
     searchRv.adapter = adapter
 
     setupBindings()
@@ -71,6 +77,7 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
 
   override fun onQueryTextSubmit(query: String?): Boolean {
     viewModel.search(query)
+    searchView.clearFocus()
     return false
   }
 }
