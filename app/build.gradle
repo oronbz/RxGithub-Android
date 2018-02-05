@@ -45,8 +45,8 @@ dependencies {
   kapt 'com.google.dagger:dagger-android-processor:2.14.1'
 
   // Retrofit
-  compile 'com.squareup.retrofit2:retrofit:2.3.0'
-  compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+  implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
   // ViewModel and LiveData
   implementation 'android.arch.lifecycle:extensions:1.0.0'

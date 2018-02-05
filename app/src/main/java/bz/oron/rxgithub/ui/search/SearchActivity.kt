@@ -37,7 +37,7 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
     searchRv.layoutManager = linearLayoutManager
 
     adapter = SearchAdapter(listOf(), {
-      Log.d("SEARCH ACTIVITY", "CLICKED: $it")
+      viewModel.click(it)
     })
 
     searchRv.adapter = adapter
@@ -67,6 +67,12 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
       it?.let {
         adapter.viewModels = it
         adapter.notifyDataSetChanged()
+      }
+    })
+
+    viewModel.presentUserProfile.observe(this, Observer {
+      it?.let {
+        Log.d("SearchActivity", "$it")
       }
     })
   }
