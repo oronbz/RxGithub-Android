@@ -142,7 +142,7 @@ fun <X,Y,Z> LiveData<X>.withLatestFrom(source: LiveData<Y>, resultSelector: (Pai
 
   result.addSource(this, {
     if (it != null && sourceResult != null) {
-      result.value = resultSelector(it, sourceResult!!)
+      result.value = resultSelector(Pair(it, sourceResult!!))
     }
   })
 

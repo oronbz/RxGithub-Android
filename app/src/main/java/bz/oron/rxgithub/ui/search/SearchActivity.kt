@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
 import bz.oron.rxgithub.R
+import bz.oron.rxgithub.ui.profile.ProfileActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import javax.inject.Inject
@@ -36,10 +37,6 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
     linearLayoutManager = LinearLayoutManager(this)
     searchRv.layoutManager = linearLayoutManager
 
-    adapter = SearchAdapter(listOf(), {
-      viewModel.click(it)
-    })
-
     searchRv.adapter = adapter
 
     setupBindings()
@@ -63,6 +60,12 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
   }
 
   private fun setupBindings() {
+    // INPUT
+    adapter = SearchAdapter(listOf(), {
+      viewModel.click(it)
+    })
+
+    // OUTPUT
     viewModel.items.observe(this, Observer {
       it?.let {
         adapter.viewModels = it
@@ -72,7 +75,8 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
 
     viewModel.presentUserProfile.observe(this, Observer {
       it?.let {
-        Log.d("SearchActivity", "$it")
+        val profile = ProfileActivity.createIntent(this, it.first, it.second)
+        startActivity(profile)
       }
     })
   }
