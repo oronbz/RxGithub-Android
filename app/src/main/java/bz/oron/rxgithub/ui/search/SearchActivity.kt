@@ -25,7 +25,6 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
   private lateinit var linearLayoutManager: LinearLayoutManager
   private lateinit var adapter: SearchAdapter
 
-  @MainThread
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_search)
