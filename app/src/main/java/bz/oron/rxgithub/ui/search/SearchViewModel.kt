@@ -4,6 +4,10 @@ import android.arch.lifecycle.*
 import bz.oron.rxgithub.livedata.*
 import bz.oron.rxgithub.models.GitHubUserSearch
 import bz.oron.rxgithub.repositories.IGitHubRepository
+import bz.oron.rxlivedata.filter
+import bz.oron.rxlivedata.filterNull
+import bz.oron.rxlivedata.map
+import bz.oron.rxlivedata.switchMap
 import javax.inject.Inject
 
 /**

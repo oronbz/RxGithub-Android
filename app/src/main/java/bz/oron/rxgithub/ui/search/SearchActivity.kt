@@ -39,7 +39,6 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
     searchRv.adapter = adapter
 
     setupBindings()
-
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
