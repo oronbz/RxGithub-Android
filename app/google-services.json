@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "401188189488",
+    "firebase_url": "https://rxgithub-8e8b0.firebaseio.com",
+    "project_id": "rxgithub-8e8b0",
+    "storage_bucket": "rxgithub-8e8b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401188189488:android:584e99454194c5eb",
+        "android_client_info": {
+          "package_name": "bz.oron.rxgithub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401188189488-sqscpdhma3obj7osbudfc9emb2b8bbj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJWvTfLOej9JoeeBri1PgNWzoyhk7ieiY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
