@@ -2,4 +2,5 @@
   <string name="app_name">RxGithub</string>
   <string name="user_image">User image</string>
   <string name="show_comments">Show Comments</string>
+  <string name="type_comment">Type comment...</string>
 </resources>

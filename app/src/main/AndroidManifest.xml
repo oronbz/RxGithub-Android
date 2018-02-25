@@ -21,6 +21,8 @@
     </activity>
     <activity android:name=".ui.profile.ProfileActivity">
     </activity>
+    <activity android:name=".ui.comments.CommentsActivity">
+    </activity>
   </application>
 
 </manifest>

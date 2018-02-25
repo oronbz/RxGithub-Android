@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import bz.oron.rxgithub.R
+import bz.oron.rxgithub.ui.comments.CommentsActivity
 import bz.oron.rxgithub.ui.transformations.RoundedTransformation
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerAppCompatActivity
@@ -67,6 +68,13 @@ class ProfileActivity : DaggerAppCompatActivity() {
             .fit()
             .centerCrop()
             .into(profileIv)
+      }
+    })
+
+    viewModel.presentComments.observe(this, Observer {
+      it?.let {
+        val comments = CommentsActivity.createIntent(this, it)
+        startActivity(comments)
       }
     })
   }

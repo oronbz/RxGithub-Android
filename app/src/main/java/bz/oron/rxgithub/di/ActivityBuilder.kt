@@ -1,5 +1,7 @@
 package bz.oron.rxgithub.di
 
+import bz.oron.rxgithub.ui.comments.CommentsActivity
+import bz.oron.rxgithub.ui.comments.CommentsModule
 import bz.oron.rxgithub.ui.profile.ProfileActivity
 import bz.oron.rxgithub.ui.profile.ProfileModule
 import bz.oron.rxgithub.ui.search.SearchActivity
@@ -18,4 +20,7 @@ abstract class ActivityBuilder {
 
   @ContributesAndroidInjector(modules = [ProfileModule::class])
   abstract fun bindProfileActivity(): ProfileActivity
+
+  @ContributesAndroidInjector(modules = [CommentsModule::class])
+  abstract fun bindCommentsActivity(): CommentsActivity
 }

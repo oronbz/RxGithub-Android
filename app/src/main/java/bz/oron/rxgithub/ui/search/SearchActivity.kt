@@ -22,7 +22,7 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
   private lateinit var viewModel: SearchViewModel
 
   private lateinit var searchView: SearchView
-  private lateinit var linearLayoutManager: LinearLayoutManager
+
   private lateinit var adapter: SearchAdapter
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,12 +33,11 @@ class SearchActivity : DaggerAppCompatActivity(), SearchView.OnQueryTextListener
 
     supportActionBar?.title = ""
 
-    linearLayoutManager = LinearLayoutManager(this)
-    searchRv.layoutManager = linearLayoutManager
-
-    searchRv.adapter = adapter
+    searchRv.layoutManager = LinearLayoutManager(this)
 
     setupBindings()
+
+    searchRv.adapter = adapter
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
